@@ -1,0 +1,445 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 0 0;
+}
+
+.bottom-text {
+    text-align: center;
+    color: #676767
+}
+
+.discord-link {
+    color: #7289da
+}
+
+.header-actions {
+    position: relative;
+    display: flex;
+    gap: 10px; /* Space between the two dropdowns */
+    top: -10px
+}
+
+.lang-select {
+    position: relative;
+    width: 150px;
+    padding-right: 10px;
+}
+
+.theme-select {
+    position: relative;
+    width: 120px
+}
+
+.select-button {
+    width: 100%;
+    padding: 10px 15px;
+    background: #fff;
+    border: 0px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    color: #666;
+    font-family: system-ui;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.arrow {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin-left: 10px;
+    opacity: 0.8;
+    
+    /* A standard downward chevron SVG */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23666666' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    
+    /* Optional: helps align the icon vertically with the text */
+    vertical-align: middle; 
+}
+
+.select-button:hover {
+    background-color: #f5f5f5;
+}
+
+.select-button:hover .selected-value {
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+.select-button:hover .arrow {
+    opacity: 1;
+}
+
+/* The Dropdown Menu */
+.select-dropdown {
+    position: absolute;
+    top: 100%;
+    /* Appears right below the button */
+    left: 0;
+    width: 90%;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    list-style: none;
+    padding: 10px 0;
+    margin-top: 5px;
+    display: none;
+    /* Hidden initially */
+    max-height: 300px;
+    overflow-y: auto;
+    z-index: 1000;
+    padding-right: 10px;
+}
+
+/* Show class for JS */
+.select-dropdown.show {
+    display: block;
+}
+
+.select-dropdown li {
+    padding: 12px 15px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    transition: background-color 0.3s ease;
+}
+
+.select-dropdown li:hover {
+    background-color: #f5f5f5;
+}
+
+.select-dropdown hr {
+    border: 0;
+    border-top: 1px solid #eee;
+    margin: 5px 15px;
+}
+
+header h1 {
+    color: rgb(0, 0, 0);
+}
+
+body {
+    font-family: system-ui;
+}
+
+.logo {
+    height: 40px;
+    padding-left: 10px;
+}
+
+.title {
+    text-align: center;
+    font-size: 28px;
+}
+
+/* Gliding bar */
+
+:root {
+    --bg-color: #ddd;
+    --pill-color: #ffffff;
+    --text-active: #000000;
+    --text-inactive: #a0a0a0;
+    --transition-speed: 0.3s;
+}
+
+.toggle-container {
+    display: flex;
+    position: relative;
+    background-color: var(--bg-color);
+    padding: 4px;
+    border-radius: 50px;
+    width: 180px;
+    user-select: none;
+    margin: 0 auto
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+label {
+    flex: 1;
+    padding: 10px 0;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+    z-index: 1;
+    color: var(--text-inactive);
+    transition: color var(--transition-speed);
+}
+
+/* Change text color when selected */
+input[type="radio"]:checked+label {
+    color: var(--text-active);
+}
+
+/* The sliding background "pill" */
+.glider {
+    position: absolute;
+    height: calc(100% - 8px);
+    width: calc(50% - 4px);
+    background-color: var(--pill-color);
+    border-radius: 50px;
+    transition: transform var(--transition-speed) ease-out;
+    z-index: 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Move the glider based on which radio is checked */
+#monthly:checked~.glider {
+    transform: translateX(0);
+}
+
+#yearly:checked~.glider {
+    transform: translateX(100%);
+}
+
+/* Pricing boxes */
+
+.pricing {
+    display: flex;
+    gap: 40px;
+    height: 80vh;
+    justify-content: center;
+    padding-top: 40px
+}
+
+.plan {
+    border: 2px solid #ccc;
+    padding: 30px;
+    width: 300px;
+    height: 460px;
+    text-align: left;
+    border-radius: 20px;
+}
+
+.plus {
+    background: linear-gradient(180deg, #aae0ff8e, #3b83f600);
+    color: rgb(0, 0, 0);
+    border: solid #127adbd8
+}
+
+.plan h2 {
+    margin-top: 0px;
+    font-size: 30px;
+}
+
+.price {
+    font-size: 40px;
+    font-weight: bold;
+    margin: 15px 0;
+}
+
+.currency {
+    font-size: 16px;
+    vertical-align: super;
+    font-weight: normal
+}
+
+.period {
+    font-size: 16px;
+    font-weight: normal
+}
+
+.vat {
+    padding: 60px 0px;
+    font-size: 12px;
+    text-align: center;
+}
+
+.plan ul {
+    list-style: none;
+    padding: 0;
+}
+
+.plan li {
+    margin: 10px 0;
+    font-size: 15px
+}
+
+.icon {
+    width: 16px;
+    height: 16px;
+    padding-right: 10px;
+    padding-top: 1px
+}
+
+button {
+    margin-top: 15px;
+    padding: 10px 20px;
+}
+
+.free-btn {
+    display: block;
+
+    background-color: #ddd;
+    color: #777;
+
+    border: none;
+    padding: 12px 28px;
+    border-radius: 999px;
+
+    margin: 30px auto;
+
+    font-size: 16px;
+    text-align: center;
+
+    cursor: not-allowed;
+}
+
+.subscribe-btn {
+    display: block;
+
+    background-color: #83d2ff;
+    color: rgb(0, 0, 0);
+
+    padding: 12px 28px;
+    border-radius: 999px;
+
+    margin: 30px auto;
+
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    text-align: center;
+
+
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.subscribe-btn:hover {
+    background-color: #68c8ff;
+}
+
+/* Dark background overlay */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Modal box */
+.modal {
+    background: white;
+    padding: 20px;
+    border-radius: 16px;
+    width: 400px;
+    max-width: 90%;
+    text-align: center;
+}
+
+/* Dark mode support */
+.dark-mode .modal {
+    background: #1e1e1e;
+    color: white;
+}
+
+/* Close button */
+#close-modal {
+    margin-top: 15px;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+body.dark-mode {
+    background-color: #121212;
+    color: #e5e5e5;
+}
+
+/* Header */
+body.dark-mode header {
+    background-color: #121212;;
+}
+
+body.dark-mode header h1 {
+    color: #e5e5e5;
+}
+
+/* Dropdown buttons */
+body.dark-mode .select-button {
+    background: #1f1f1f;
+    color: #bdbdbd;
+}
+
+body.dark-mode .select-button:hover {
+    background-color: #2a2a2a;
+}
+
+body.dark-mode .select-button:hover .selected-value {
+    color: #ffffff;
+}
+
+/* Dropdown menu */
+body.dark-mode .select-dropdown {
+    background: #1f1f1f;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+}
+
+body.dark-mode .select-dropdown li:hover {
+    background-color: #2a2a2a;
+}
+
+body.dark-mode .select-dropdown hr {
+    border-top: 1px solid #333;
+}
+
+/* Pricing cards */
+body.dark-mode .plan {
+    background-color: #1b1b1b;
+    border-color: #333;
+}
+
+/* Highlighted Plus card */
+body.dark-mode .plus {
+    background: linear-gradient(180deg, #1b3c56, #121212);
+    border-color: #2f8cff;
+    color: #e5e5e5;
+}
+
+/* Price text */
+body.dark-mode .price {
+    color: #ffffff;
+}
+
+/* Buttons */
+body.dark-mode .subscribe-btn {
+    background-color: #2f8cff;
+    color: white;
+}
+
+body.dark-mode .subscribe-btn:hover {
+    background-color: #1e6fe0;
+}
+
+body.dark-mode .free-btn {
+    background-color: #2a2a2a;
+    color: #888;
+}
+
+/* Toggle switch colors */
+body.dark-mode .toggle-container {
+    --bg-color: #2a2a2a;
+    --pill-color: #1b1b1b;
+    --text-active: #ffffff;
+    --text-inactive: #888;
+}
