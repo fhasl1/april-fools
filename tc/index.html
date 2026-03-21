@@ -13,7 +13,11 @@
   <header>
     <h1><img src="light-mode.png" class="logo" id="logo" /></h1>
 
-    <div class="header-actions">
+    <button class="menu-toggle" id="menu-toggle">
+      ☰
+    </button>
+
+    <div class="header-actions" id="header-actions">
       <div class="custom-select theme-select">
         <button class="select-button" id="theme-btn">
           <span class="selected-value">hệ th0'ng</span>
@@ -33,10 +37,10 @@
         </button>
 
         <ul class="select-dropdown lang-dropdown" id="dropdown-list">
-                    <li data-url="/en/">English</li>
-                    <li data-url="/gz/">Gen Z</li>
-                    <li data-url="/tc/">t33nc0])3</li>
-                    <li data-url="/vi/">Tiếng Việt</li>
+          <li data-url="/en/">English</li>
+          <li data-url="/gz/">Gen Z</li>
+          <li data-url="/tc/">t33nc0])3</li>
+          <li data-url="/vi/">Tiếng Việt</li>
         </ul>
       </div>
     </div>
@@ -247,6 +251,13 @@
         if (e.key === "Escape" && overlay.style.display === "flex") {
           closeModal();
         }
+      });
+
+      const menuToggle = document.getElementById("menu-toggle");
+      const headerActions = document.getElementById("header-actions");
+
+      menuToggle.addEventListener("click", () => {
+        headerActions.classList.toggle("open");
       });
     });
 

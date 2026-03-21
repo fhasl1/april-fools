@@ -15,12 +15,21 @@ header {
 .discord-link {
     color: #7289da
 }
-
+    
 .header-actions {
-    position: relative;
     display: flex;
-    gap: 10px; /* Space between the two dropdowns */
-    top: -10px
+    gap: 15px;
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 28px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    transform: translateY(-4.8px);
+    line-height: 1
 }
 
 .lang-select {
@@ -32,7 +41,6 @@ header {
 .theme-select {
     position: relative;
     width: 120px;
-    margin-left: 20px
 }
 
 .select-button {
@@ -126,7 +134,9 @@ header {
 }
 
 header h1 {
-    color: rgb(0, 0, 0);
+    margin: 0;
+    display: flex;          /* ensures logo behaves like other flex items */
+    align-items: center;
 }
 
 body {
@@ -134,8 +144,8 @@ body {
 }
 
 .logo {
-    height: 40px;
-    padding-left: 10px;
+    display: block;         /* removes inline image baseline gap */
+    max-height: 40px;
 }
 
 .title {
@@ -212,9 +222,11 @@ input[type="radio"]:checked+label {
 
 .pricing {
     display: flex;
-    justify-content: center;
     gap: 20px;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
+    align-items: center;
+    padding: 0 16px;
+    justify-content: center;
 }
 
 .plan {
@@ -224,18 +236,6 @@ input[type="radio"]:checked+label {
     height: 460px;
     text-align: left;
     border-radius: 20px;
-}
-
-@media (max-width: 768px) {
-    .pricing {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .plan {
-        width: 90%;
-        max-width: 400px;
-    }
 }
 
 .plus {
@@ -390,6 +390,10 @@ body.dark-mode header h1 {
     color: #e5e5e5;
 }
 
+body.dark-mode .menu-toggle {
+    color: white
+}
+
 /* Dropdown buttons */
 body.dark-mode .select-button {
     background: #1f1f1f;
@@ -457,4 +461,41 @@ body.dark-mode .toggle-container {
     --pill-color: #1b1b1b;
     --text-active: #ffffff;
     --text-inactive: #888;
+}
+
+
+@media (max-width: 768px) {
+    .pricing {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .plan {
+        width: 90%;
+        max-width: 400px;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .header-actions {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        margin-top: 10px;
+        align-items: flex-start
+    }
+
+    .header-actions.open {
+        display: flex;
+    }
+
+    header {
+        flex-wrap: wrap;
+    }
+
+    .logo {
+        max-height: 40px;
+    }
 }
