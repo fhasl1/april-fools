@@ -29,7 +29,10 @@ header {
     cursor: pointer;
     position: relative;
     transform: translateY(-4.8px);
-    line-height: 1
+    line-height: 1;
+    appearance: none;
+    -webkit-appearance: none;
+    color: black;
 }
 
 .lang-select {
