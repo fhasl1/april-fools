@@ -1,0 +1,318 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>h0 tr0. 0vnc</title>
+  <link rel="icon" type="image/png" href="../favicon.png">
+  <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+  <header>
+    <h1><img src="light-mode.png" class="logo" id="logo" /></h1>
+
+    <div class="header-actions">
+      <div class="custom-select theme-select">
+        <button class="select-button" id="theme-btn">
+          <span class="selected-value">hệ th0'ng</span>
+          <span class="arrow"></span>
+        </button>
+        <ul class="select-dropdown theme-dropdown" id="theme-list">
+          <li data-theme="system" class="active">hệ th0'ng</li>
+          <li data-theme="light">s4'ng</li>
+          <li data-theme="dark">t0'j</li>
+        </ul>
+      </div>
+
+      <div class="custom-select lang-select">
+        <button class="select-button" id="select-btn">
+          <span class="selected-value">t33nc0])3</span>
+          <span class="arrow"></span>
+        </button>
+
+        <ul class="select-dropdown lang-dropdown" id="dropdown-list">
+                    <li data-url="/en/">English</li>
+                    <li data-url="/gz/">Gen Z</li>
+                    <li data-url="/tc/">t33nc0])3</li>
+                    <li data-url="/vi/">Tiếng Việt</li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <p class="title">ch0.n g0'j cu4 |34n</p>
+
+  <div class="toggle-container">
+    <input type="radio" id="monthly" name="account-type" checked />
+    <label for="monthly">th4'ng</label>
+
+    <input type="radio" id="yearly" name="account-type" />
+    <label for="yearly">n4m</label>
+
+    <div class="glider"></div>
+  </div>
+
+  <section class="pricing">
+    <div class="plan">
+      <h2>mj3n phj'</h2>
+      <p class="price">
+        <span class="currency">₫</span><span id="free-price">0</span><span class="period">VND/th4'ng</span>
+      </p>
+
+      <a class="free-btn" disabled>g0'j hjện t4j cu4 |34n</a>
+
+      <ul>
+        <li>
+          <img src="../icons/upload-light.png" class="icon" />
+          +)u0.c +)4ng t4j tr3n nh0'm
+        </li>
+        <li>
+          <img src="../icons/approval-light.png" class="icon" />
+          ])uijệt tj3u chu4n
+        </li>
+        <li>
+          <img src="../icons/access-light.png" class="icon" />
+          gj40 |_uu c0.ng +)0`ng
+        </li>
+      </ul>
+    </div>
+
+    <div class="plan plus">
+      <h2>p|_us</h2>
+      <p class="price">
+        <span class="currency">₫</span><span id="plus-price">55.000</span><span class="period">VND/th4'ng</span>
+      </p>
+
+      <a class="subscribe-btn" href="#" id="subscribe-btn">+)4ng kj' g0'j p|_us</a>
+
+      <ul>
+        <li>
+          <img src="../icons/thumbsup-light.png" class="icon" />
+          m0.j quij3`n |_0.j tr0ng g0'j mj3n phj'
+        </li>
+        <li>
+          <img src="../icons/exclusive-light.png" class="icon" />
+          n0.j ])ung +)0.c quij3`n
+        </li>
+        <li>
+          <img src="../icons/approval-light.png" class="icon" />
+          ])uijệt uu tj3n
+        </li>
+        <li>
+          <img src="../icons/supporter-light.png" class="icon" />
+          c0 h0.j +)u0.c t4ng 0su!supp0rt3r
+        </li>
+        <li>
+          <img src="../icons/gift-light.png" class="icon" />
+          qu4` +)4c |3jệt ch0 ngu0`j +)4ng ký |_4u ])4`j
+        </li>
+      </ul>
+
+      <p class="vat">gj4' +)4 |340 g0`m v4t.</p>
+    </div>
+  </section>
+
+  <p class="bottom-text">
+    th4m gj4
+    <a class="discord-link" href="https://discord.gg/hmT9pAPaEX">])jsc0r])</a>
+    hcu4 chu'ng mj`nh 💙
+  </p>
+
+  <script>
+    function updateLogo(theme) {
+      const logo = document.getElementById("logo");
+
+      if (theme === "dark") {
+        logo.src = "../dark-mode.png";
+      } else {
+        logo.src = "../light-mode.png";
+      }
+    }
+
+    function updateIcons(theme) {
+      const icons = document.querySelectorAll(".icon");
+
+      icons.forEach((icon) => {
+        if (theme === "dark") {
+          icon.src = icon.src.replace("-light.png", "-dark.png");
+        } else {
+          icon.src = icon.src.replace("-dark.png", "-light.png");
+        }
+      });
+    }
+
+    function getSystemTheme() {
+      return window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light";
+    }
+
+    function applyTheme(theme) {
+      const body = document.body;
+
+      body.classList.remove("light-mode", "dark-mode");
+
+      let activeTheme;
+
+      if (theme === "system") {
+        activeTheme = window.matchMedia("(prefers-color-scheme: dark)")
+          .matches
+          ? "dark"
+          : "light";
+      } else {
+        activeTheme = theme;
+      }
+
+      body.classList.add(activeTheme + "-mode");
+
+      updateLogo(activeTheme);
+      updateIcons(activeTheme);
+    }
+
+    const themeBtn = document.getElementById("theme-btn");
+    const themeList = document.getElementById("theme-list");
+    const body = document.body;
+
+    themeBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      themeList.classList.toggle("show");
+      document.getElementById("lang-list").classList.remove("show");
+    });
+
+    themeList.addEventListener("click", (e) => {
+      if (e.target.tagName === "LI") {
+        const theme = e.target.getAttribute("data-theme");
+        const displayValue = themeBtn.querySelector(".selected-value");
+
+        displayValue.innerText = e.target.innerText;
+
+        applyTheme(theme);
+
+        localStorage.setItem("theme", theme);
+
+        themeList.classList.remove("show");
+      }
+    });
+
+    window.addEventListener("click", () => {
+      themeList.classList.remove("show");
+      document.getElementById("lang-list").classList.remove("show");
+    });
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const savedTheme = localStorage.getItem("theme") || "system";
+
+      applyTheme(savedTheme);
+
+      const displayValue = themeBtn.querySelector(".selected-value");
+      const selectedOption = themeList.querySelector(
+        `[data-theme="${savedTheme}"]`,
+      );
+
+      if (selectedOption) {
+        displayValue.innerText = selectedOption.innerText;
+      }
+      const subscribeBtn = document.getElementById("subscribe-btn");
+      const overlay = document.getElementById("overlay");
+      const modal = document.querySelector(".modal");
+      const video = document.getElementById("rickroll-video");
+
+      // Open modal
+      subscribeBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        overlay.style.display = "flex";
+
+        video.muted = false;
+        video.play();
+      });
+
+      // Close function
+      function closeModal() {
+        overlay.style.display = "none";
+        video.pause();
+        video.currentTime = 0;
+      }
+
+      // Click outside modal
+      overlay.addEventListener("click", (e) => {
+        if (!modal.contains(e.target)) {
+          closeModal();
+        }
+      });
+
+      // ESC key to close
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && overlay.style.display === "flex") {
+          closeModal();
+        }
+      });
+    });
+
+    // Close all dropdowns when clicking outside
+    window.addEventListener("click", () => {
+      themeList.classList.remove("show");
+      document.getElementById("lang-list").classList.remove("show");
+    });
+
+    const btn = document.getElementById("select-btn");
+    const list = document.getElementById("dropdown-list");
+
+    // Toggle the list when clicking the button
+    btn.addEventListener("click", () => {
+      list.classList.toggle("show");
+    });
+
+    // Update button text and close list when an item is clicked
+    list.addEventListener("click", (e) => {
+      if (e.target.tagName === "LI") {
+        const url = e.target.getAttribute("data-url");
+        if (url) {
+          window.location.href = url; // This redirects the browser to the new file
+        }
+      }
+    });
+
+    // Close the dropdown if user clicks outside of it
+    window.addEventListener("click", (e) => {
+      if (!btn.contains(e.target)) {
+        list.classList.remove("show");
+      }
+    });
+
+    const monthlyRadio = document.getElementById("monthly");
+    const yearlyRadio = document.getElementById("yearly");
+    const plusPrice = document.getElementById("plus-price");
+    const periods = document.querySelectorAll(".period"); // Targets all "VND/month" spans
+
+    function updatePricing() {
+      if (yearlyRadio.checked) {
+        // Yearly Values
+        plusPrice.innerText = "550.000";
+        periods.forEach((p) => (p.innerText = "VND/n4m"));
+      } else {
+        // Monthly Values
+        plusPrice.innerText = "55.000";
+        periods.forEach((p) => (p.innerText = "VND/th4'ng"));
+      }
+    }
+
+    // Listen for clicks on both buttons
+    monthlyRadio.addEventListener("change", updatePricing);
+    yearlyRadio.addEventListener("change", updatePricing);
+  </script>
+
+  <div id="overlay" class="overlay">
+    <div class="modal">
+      <h2>Happy April Fools Suckers</h2>
+
+      <video id="rickroll-video" width="100%" controls>
+        <source src="../lol.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </div>
+</body>
+
+</html>
