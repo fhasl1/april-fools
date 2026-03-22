@@ -470,12 +470,16 @@ body.dark-mode .toggle-container {
 @media (max-width: 768px) {
     .pricing {
         flex-direction: column;
-        align-items: center;
+        align-items: center;    
     }
 
     .plan {
         width: 90%;
         max-width: 400px;
+    }
+
+    .plan.plus {
+        order: -1
     }
 
     .menu-toggle {
